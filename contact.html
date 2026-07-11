@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Node</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --bg: #0f172a;
+            --card: rgba(255, 255, 255, .05);
+            --border: rgba(255, 255, 255, .1);
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --text: #fff;
+            --muted: #cbd5e1;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            background: rgba(15, 23, 42, .8);
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 90px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        .contact {
+            padding: 30px 0 100px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 35px;
+        }
+
+        .card h2 {
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 12px;
+            outline: none;
+            color: white;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: none;
+            height: 150px;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #94a3b8;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .info-item:last-child {
+            border: none;
+            margin-bottom: 0;
+        }
+
+        .info-item h3 {
+            margin-bottom: 8px;
+        }
+
+        .info-item p {
+            color: var(--muted);
+        }
+
+        .socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .socials a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .08);
+            text-decoration: none;
+            font-size: 20px;
+            transition: .3s;
+        }
+
+        .socials a:hover {
+            transform: translateY(-5px);
+        }
+
+        .map {
+            padding-bottom: 100px;
+        }
+
+        .map-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        .cta {
+            padding-bottom: 100px;
+        }
+
+        .cta-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            color: #94a3b8;
+        }
+
+        @media(max-width:900px) {
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+        }
+
+        @media(max-width:600px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .cta-box h2 {
+                font-size: 30px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+
+            <nav>
+
+                <div class="logo">Node</div>
+
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+
+            </nav>
+
+        </div>
+    </header>
+
+    <section class="hero">
+
+        <div class="container">
+
+            <h1>Contact Us</h1>
+
+            <p>
+                Have a project in mind? Let's discuss how we can help your business grow.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="contact">
+
+        <div class="container">
+
+            <div class="contact-grid">
+
+                <div class="card">
+
+                    <h2>Send Message</h2>
+
+                    <form>
+
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea placeholder="Write your message..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">
+                            Send Message
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <div class="card">
+
+                    <h2>Contact Information</h2>
+
+                    <div class="info-item">
+                        <h3>📍 Address</h3>
+                        <p>Surat, Gujarat, India</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>📞 Phone</h3>
+                        <p>+91 98765 43210</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>📧 Email</h3>
+                        <p>Node@text.com</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>🕒 Working Hours</h3>
+                        <p>Mon - Sat : 9:00 AM - 7:00 PM</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="map">
+
+        <div class="container">
+
+            <div class="map-box">
+
+                <iframe src="https://maps.google.com/maps?q=surat&t=&z=13&ie=UTF8&iwloc=&output=embed">
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="cta">
+
+        <div class="container">
+
+            <div class="cta-box">
+
+                <h2>Let's Build Something Amazing</h2>
+
+                <p>
+                    We create modern websites, APIs and scalable applications for businesses worldwide.
+                </p>
+
+                <button class="btn" style="max-width:250px;">
+                    Start Your Project
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 Node. All Rights Reserved.
+    </footer>
+
+</body>
+
+</html>
