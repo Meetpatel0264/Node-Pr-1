@@ -23,7 +23,6 @@ A simple responsive multi-page website served with Node.js's built-in `http` and
 ## Project Structure
 
 ```text
-node-multipage-website/
 ├── index.js
 ├── index.html
 ├── about.html
@@ -31,8 +30,6 @@ node-multipage-website/
 ├── contact.html
 └── README.md
 ```
-
-> Rename `index(11).js` to `index.js` and `index(8).html` to `index.html` before running the project.
 
 ## Routes
 
@@ -54,26 +51,19 @@ Download and install a current Node.js version, then verify it:
 node --version
 ```
 
-### 2. Rename the uploaded files
-
-```text
-index(11).js  → index.js
-index(8).html → index.html
-```
-
-### 3. Open the project folder in a terminal
+### 2. Open the project folder in a terminal
 
 ```bash
 cd path/to/node-multipage-website
 ```
 
-### 4. Start the server
+### 3. Start the server
 
 ```bash
 node index.js
 ```
 
-### 5. Open the website
+### 4. Open the website
 
 ```text
 http://localhost:9094
@@ -88,8 +78,6 @@ The server uses:
 ```js
 fs.readFile("./index.html", "utf-8", ...)
 ```
-
-However, the uploaded home page is named `index(8).html`. Therefore, the `/` route cannot find the file until it is renamed to `index.html`.
 
 ### Other issues and improvements
 
